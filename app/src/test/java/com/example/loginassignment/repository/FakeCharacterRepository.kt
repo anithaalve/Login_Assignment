@@ -1,0 +1,24 @@
+package com.example.loginassignment.repository
+
+import com.example.loginassignment.data.local.CharacterDao
+import com.example.loginassignment.data.remote.CharacterRemoteDataSource
+import com.example.loginassignment.common.utils.performGetOperation
+import javax.inject.Inject
+
+class FakeCharacterRepository @Inject constructor(
+  private val remoteDataSource: CharacterRemoteDataSource,
+  private val localDataSource: CharacterDao
+) {
+  
+  fun getCharacter(id: Int) = performGetOperation(
+    databaseQuery = { localDataSource.getCharacter(id) },
+    networkCall = { remoteDataSource.getCharacter(id) },
+    saveCallResult = { localDataSource.insert(it) }
+  )
+  
+  fun getCharacters() = performGetOperation(
+    databaseQuery = { localDataSource.getAllCharacters() },
+    networkCall = { remoteDataSource.getCharacters() },
+    saveCallResult = { localDataSource.insertAll(it.results) }
+  )
+}

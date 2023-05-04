@@ -1,0 +1,4 @@
+rootProject.name = "Login Assignment"
+include ':app'
+include ':lib'
+include ':JavaProgram'

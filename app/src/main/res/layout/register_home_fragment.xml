@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="registerViewModel"
+            type="com.example.loginassignment.ui.register.RegisterViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/tv_entrytype"
+                    style="@style/HintTextStyle"
+                    android:text="@string/register"
+                    android:textSize="16dp"
+                    tools:ignore="MissingConstraints" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_first_name_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/FirstNameTextField"
+                    android:textColorHint="@color/dark_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_entrytype"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_Carb_Intake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="@={registerViewModel.getFirstName}"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_lastName_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/SecondNameTextField"
+                    android:focusable="false"
+                    android:textColorHint="@color/dark_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_first_name_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:text="@={registerViewModel.getLastName}"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_userName_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/UsenameTextField"
+                    android:focusable="false"
+                    android:textColorHint="@color/dark_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_lastName_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_input_userName_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:maxLines="1"
+                        android:text="@={registerViewModel.getUsername}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txt_input_Password_layout"
+                    style="@style/TextInputLayoutStyle"
+                    android:hint="@string/PasswordTextField"
+                    android:focusable="false"
+                    android:textColorHint="@color/dark_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_input_userName_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:text="@={registerViewModel.getPassword}"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/pacificBlue"
+            android:onClick="@{(v)->registerViewModel.onClick(v)}"
+            android:text="@string/submitButton"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
